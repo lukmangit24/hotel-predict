@@ -1,63 +1,58 @@
 import streamlit as st
-import pandas as pd
-import joblib
 
-st.title("Hotel Booking Cancellation Prediction")
+st.set_page_config(
+    page_title="Hotel Booking Cancellation Prediction",
+    page_icon="🏨",
+    layout="wide"
+)
 
-# Load model
-model = joblib.load("best_model2.pkl")
+st.title("🏨 Hotel Booking Cancellation Prediction")
 
-st.write("Masukkan informasi reservasi:")
+st.markdown("---")
 
-# Input dari user
-lead_time = st.number_input("Lead Time", 0, 365, 30)
-adr = st.number_input("ADR (Average Daily Rate)", 0.0, 500.0, 100.0)
-adults = st.number_input("Adults", 1, 5, 2)
-children = st.number_input("Children", 0, 5, 0)
+st.header("📊 Latar Belakang")
 
-# Data lengkap sesuai fitur training
-input_data = {
-    "hotel": "City Hotel",
-    "lead_time": lead_time,
-    "arrival_date_year": 2017,
-    "arrival_date_month": "July",
-    "arrival_date_week_number": 30,
-    "arrival_date_day_of_month": 15,
-    "stays_in_weekend_nights": 1,
-    "stays_in_week_nights": 2,
-    "adults": adults,
-    "children": children,
-    "babies": 0,
-    "meal": "BB",
-    "country": "PRT",
-    "market_segment": "Online TA",
-    "distribution_channel": "TA/TO",
-    "is_repeated_guest": 0,
-    "previous_cancellations": 0,
-    "previous_bookings_not_canceled": 0,
-    "reserved_room_type": "A",
-    "assigned_room_type": "A",
-    "booking_changes": 0,
-    "deposit_type": "No Deposit",
-    "agent": 0,
-    "days_in_waiting_list": 0,
-    "customer_type": "Transient",
-    "adr": adr,
-    "required_car_parking_spaces": 0,
-    "total_of_special_requests": 0
-}
+st.write("""
+Industri perhotelan sering menghadapi masalah **pembatalan reservasi** yang cukup tinggi.
+Pembatalan ini dapat menyebabkan kehilangan potensi pendapatan dan menyulitkan hotel
+dalam mengelola ketersediaan kamar.
+""")
 
-input_df = pd.DataFrame([input_data])
+st.markdown("---")
 
-# Tombol prediksi
-if st.button("Predict"):
+st.header("🚨 Masalah Utama")
 
-    prediction = model.predict(input_df)[0]
-    probability = model.predict_proba(input_df)[0][1]
+st.write("""
+Masalah utama yang ingin diselesaikan dalam proyek ini adalah
+**memprediksi kemungkinan pembatalan reservasi hotel berdasarkan karakteristik pemesanan.**
 
-    if prediction == 1:
-        st.error("Booking kemungkinan akan dibatalkan")
-    else:
-        st.success("Booking kemungkinan tidak dibatalkan")
+Pembatalan menyebabkan **kehilangan potensi pendapatan bagi hotel**.
+""")
 
-    st.write(f"Probability Cancel: {round(probability*100,2)}%")
+st.markdown("---")
+
+st.header("🎯 Objective")
+
+st.write("""
+Hasil prediksi ini dapat membantu hotel dalam:
+
+- Mengurangi potensi kerugian akibat pembatalan reservasi
+- Mengoptimalkan strategi overbooking
+- Menyesuaikan kebijakan deposit
+- Mengembangkan strategi pemasaran yang lebih tepat sasaran
+""")
+
+st.markdown("---")
+
+st.header("🤖 Model yang Digunakan")
+
+st.write("""
+Model Machine Learning yang digunakan adalah **Random Forest Classifier**.
+
+Model ini dipilih karena:
+- mampu menangani data kompleks
+- robust terhadap overfitting
+- memiliki performa yang baik pada dataset tabular
+""")
+
+st.success("Gunakan menu di sidebar untuk membuka halaman lainnya.")
