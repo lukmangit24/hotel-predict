@@ -90,78 +90,6 @@ Evaluation metrics used:
 
 The **best-performing model** was selected and deployed.
 
----
-
-## Streamlit Web Application
-
-The trained model is deployed using **Streamlit** to create an interactive web application where users can input booking information and receive a cancellation prediction.
-
-Features of the application:
-
-* Input booking information
-* Predict booking cancellation
-* Display cancellation probability
-
-Run the application locally:
-
-```bash
-streamlit run app.py
-```
-
----
-
-## Project Structure
-
-```
-hotel-predict
-│
-├── app.py
-├── best_model.pkl
-├── notebook.ipynb
-├── requirements.txt
-└── README.md
-```
-
----
-
-## Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/hotel-predict.git
-cd hotel-predict
-```
-
-Create environment:
-
-```bash
-conda create -n hotel_ml python=3.10
-conda activate hotel_ml
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the Streamlit application:
-
-```bash
-streamlit run app.py
-```
-
----
-
-## Technologies Used
-
-* Python
-* Pandas
-* NumPy
-* Scikit-learn
-* XGBoost
-* Streamlit
 
 ---
 
@@ -181,3 +109,4 @@ Possible improvements for this project include:
 Muhammad Lukmanul Hakim
 
 Data Science Project – Hotel Booking Cancellation Prediction
+https://hotelprdeic.streamlit.app/
